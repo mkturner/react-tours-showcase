@@ -10,14 +10,21 @@ function App() {
 
   const fetchTours = async () => {
     setLoading(true);
+
+    try {
+      const res = await fetch(url);
+      const tours = await res.json();
+      setLoading(false);
+      setTours(tours);
+    } catch (error) {
+      setLoading(false);
+      console.log(error);
+    }
   };
 
-  const fetchTours = async () => {
-    setLoading(true);
-    const res = await fetch(url);
-    const tours = await fetch.json();
-    console.log(tours);
-  };;
+  useEffect(() => {
+    fetchTours();
+  }, []);
 
   // conditional return, if fetching data
   if (loading) {
