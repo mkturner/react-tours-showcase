@@ -12,7 +12,13 @@ const Tour = ({id, image, info, name, price}) => {
           <h4 className='tour-price'>{price}</h4>
         </div>
         {/* Conditional Rendering for full paragraph */}
-        <p>{readMore ? info : `${info.substring(0, 200)}...`}</p>
+        <p>
+          {readMore ? info : `${info.substring(0, 200)}...`}
+          {/* use setReadMore to flip readMore state */}
+          <button onClick={() => setReadMore(!readMore)}>
+            {readMore ? 'Show Less' : 'Read More'}
+          </button>
+        </p>
         <button className='delete-btn'>Not Interested</button>
       </footer>
     </article>
