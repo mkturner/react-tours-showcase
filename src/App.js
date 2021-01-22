@@ -8,7 +8,8 @@ function App() {
   const [loading, setLoading] = useState(true);
   const [tours, setTours] = useState([]);
 
-  const removeTour = () => {
+  // function to remove tour by id, passed down by props
+  const removeTour = (id) => {
     const newTours = tours.filter((tour) => tour.id !== id);
     setTours(newTours);
   };
@@ -30,6 +31,16 @@ function App() {
   useEffect(() => {
     fetchTours();
   }, []);
+
+  // Handle case where Tours array is empty
+  if (tours.length === 0) {
+    return <main>
+      <div className="title">
+        <h2>No tours left</h2>
+        <button className="btn" onClick={() => fetchTours}>Fetch Tours</button>
+      </div>
+    </main>
+  }
 
   // conditional return, if fetching data
   if (loading) {

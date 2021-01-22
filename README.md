@@ -1,5 +1,6 @@
 # React Tours Showcase
 
 - more component practice
-- use effect
+- hooks: useState, useEffect
 - conditional rendering
+- passing functions as props
